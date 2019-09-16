@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import './style.css'
 import Kid from './Kid.jpg'
 import print from './print'
@@ -12,22 +11,26 @@ square(2)
 process.env.NODE_ENV === 'production' ? console.log('production') : console.log('development')
 
 
-function component() {
-    let element = document.createElement('div');
+function getComponent() {
+    return import('lodash').then(_ => {
+        let element = document.createElement('div');
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    element.classList.add('hello')
+        element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+        element.classList.add('hello')
 
-    // 图片添加
-    let myKid = new Image()
-    myKid.src = Kid
-    myKid.width = 100
-    element.appendChild(myKid)
+        // 图片添加
+        let myKid = new Image()
+        myKid.src = Kid
+        myKid.width = 100
+        element.appendChild(myKid)
 
-    // 点击触发
-    element.onclick = () => print('world') // hello world
+        // 点击触发
+        element.onclick = () => print('world') // hello world
 
-    return element;
+        return element;
+    })
 }
 
-document.body.appendChild(component());
+getComponent().then(component => {
+    document.body.appendChild(component);
+})

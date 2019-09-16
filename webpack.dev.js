@@ -6,6 +6,11 @@ module.exports = merge(common, {
     mode: 'development',
     stats: { children: false },
 
+    output: {
+        // 配置服务器资源路径
+        publicPath: '/'
+    },
+
     // 追踪编译过程的语法错误
     devtool: 'inline-source-map',
 
