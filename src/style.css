@@ -1,4 +1,5 @@
 .hello {
-  background-color: #999;
+  background-color: #f00;
+  height: 300px;
   background: url("./kid.jpg");
 }

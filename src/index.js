@@ -2,6 +2,15 @@ import _ from 'lodash'
 import './style.css'
 import Kid from './Kid.jpg'
 import print from './print'
+// 在 production 模式下 cube 不会被引入，文件会被压缩，而 development 反之
+import { square } from './math'
+
+// math 测试
+square(2)
+
+// 环境测试
+process.env.NODE_ENV === 'production' ? console.log('production') : console.log('development')
+
 
 function component() {
     let element = document.createElement('div');
