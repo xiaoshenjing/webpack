@@ -27,6 +27,23 @@ module.exports = { // 入口文件
         }),
     ],
 
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        port: '',
+        proxy: { // 改变请求代理
+            '/api': {
+                target: 'http://localhost:8080/api',
+                secure: false, // 是否仅用 https
+                changeOrigin: true // 改变源
+            },
+            '/mock': {
+                target: 'http://localhost:8080/mock',
+                secure: false, // 是否仅用 https
+                changeOrigin: true // 改变源
+            }
+        }
+    },
+
     module: { // 类型引入
         rules: [
             { test: /\.css$/, use: ['style-loader', 'css-loader'] }, // 加载 css

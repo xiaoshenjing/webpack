@@ -17,7 +17,8 @@ module.exports = merge(common, {
     // 热更新：告知 webpack-dev-server，在 localhost:8080 下建立服务，将 dist 目录下的文件，作为可访问文件
     devServer: {
         contentBase: './dist',
-        open: true
+        open: true, // 启动默认打开浏览器
+        inline: true // 实时更新
     },
 
     plugins: [
